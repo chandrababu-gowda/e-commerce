@@ -19,3 +19,6 @@ mongoose
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
 });
+
+const addRouter = require("./routes/seller/add");
+app.use("/add", addRouter);
