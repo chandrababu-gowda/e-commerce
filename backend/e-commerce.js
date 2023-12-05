@@ -20,5 +20,8 @@ app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
 });
 
-const addRouter = require("./routes/seller/add");
-app.use("/add", addRouter);
+const createRouter = require("./routes/seller/create");
+app.use("/create", createRouter);
+
+const readRouter = require("./routes/seller/read");
+app.use("/read", readRouter);
