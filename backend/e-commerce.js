@@ -28,3 +28,6 @@ app.use("/read", readRouter);
 
 const updateRouter = require("./routes/seller/update");
 app.use("/update", updateRouter);
+
+const deleteRouter = require("./routes/seller/delete");
+app.use("/delete", deleteRouter);
