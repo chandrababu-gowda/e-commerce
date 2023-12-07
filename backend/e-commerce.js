@@ -20,10 +20,13 @@ app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
 });
 
+const signupRouter = require("./routes/signup");
+app.use("/signup", signupRouter);
+
 const createRouter = require("./routes/seller/create");
 app.use("/create", createRouter);
 
-const readRouter = require("./routes/seller/read");
+const readRouter = require("./routes/read");
 app.use("/read", readRouter);
 
 const updateRouter = require("./routes/seller/update");

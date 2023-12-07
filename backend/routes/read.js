@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const itemModel = require("../../schema/item");
+const itemModel = require("../schema/item");
 
 router.get("/", async (req, res) => {
   try {
