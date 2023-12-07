@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const router = express.Router();
 const itemModel = require("../../schema/item");
+const uuid = require("uuid");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -9,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 router.post("/", (req, res) => {
   itemModel
     .create({
+      uid: uuid.v1(),
       name: req.body.name,
       desc: req.body.desc,
       price: req.body.price,

@@ -25,3 +25,6 @@ app.use("/create", createRouter);
 
 const readRouter = require("./routes/seller/read");
 app.use("/read", readRouter);
+
+const updateRouter = require("./routes/seller/update");
+app.use("/update", updateRouter);
