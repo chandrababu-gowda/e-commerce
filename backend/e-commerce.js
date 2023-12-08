@@ -23,6 +23,9 @@ app.listen(port, () => {
 const signupRouter = require("./routes/signup");
 app.use("/signup", signupRouter);
 
+const loginRouter = require("./routes/login");
+app.use("/login", loginRouter);
+
 const createRouter = require("./routes/seller/create");
 app.use("/create", createRouter);
 

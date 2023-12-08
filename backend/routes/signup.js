@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 router.post("/", async (req, res) => {
   try {
     const enteredUsername = req.body.username;
+    const userType = req.body.type;
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const passwordsMatched = await bcrypt.compare(
       req.body.confirmPassword,
@@ -42,8 +43,13 @@ router.post("/", async (req, res) => {
             console.log(err);
           });
 
+        const personDetails = {
+          username: enteredUsername,
+          userType: userType,
+        };
+
         const accessToken = jwt.sign(
-          enteredUsername,
+          personDetails,
           process.env.ACCESS_TOKEN_SECRET
         );
 
