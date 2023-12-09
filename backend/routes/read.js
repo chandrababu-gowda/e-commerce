@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const itemModel = require("../schema/item");
+const { authenticateToken } = require("../middleware/authenticate");
 
-router.get("/", async (req, res) => {
+router.get("/", authenticateToken, async (req, res) => {
   try {
     let allItemsArray = await itemModel.find({}, "-_id -__v");
     res.status(201).json(allItemsArray);
