@@ -29,6 +29,9 @@ app.use("/login", loginRouter);
 const changePasswordRouter = require("./routes/changePassword");
 app.use("/changePassword", changePasswordRouter);
 
+const logoutRouter = require("./routes/logout");
+app.use("/logout", logoutRouter);
+
 const createRouter = require("./routes/seller/create");
 app.use("/create", createRouter);
 
