@@ -3,8 +3,8 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const userModel = require("../schema/user");
-const profileModel = require("../schema/profile");
+const userModel = require("../models/user");
+const profileModel = require("../models/profile");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));

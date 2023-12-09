@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const userModel = require("../schema/user");
+const userModel = require("../models/user");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,21 +18,34 @@ router.post("/", async (req, res) => {
       hashedPassword
     );
     const userExists = await userModel.findOne({ username: enteredUsername });
+
     if (Boolean(userExists)) {
       if (passwordsMatched) {
         const searchCondition = { username: enteredUsername };
         const updateCondition = { password: hashedPassword };
         userModel.findOneAndUpdate(searchCondition, updateCondition);
-        res.status(200).json({ message: "Details updated" });
+        res.status(200).json({
+          status: "200: OK",
+          message: "Details updated",
+        });
       } else {
-        res.status(400).json({ message: "Password aren't matching" });
+        res.status(400).json({
+          status: "400: Bad Request",
+          message: "Password aren't matching",
+        });
       }
     } else {
-      res.status(400).json({ message: "User doesn't exists" });
+      res.status(400).json({
+        status: "400: Bad Request",
+        message: "User doesn't exists",
+      });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({
+      status: "500: Internal Server Error",
+      message: "Unable to update item in database",
+    });
   }
 });
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const userModel = require("../schema/user");
+const userModel = require("../models/user");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,14 +27,20 @@ router.post("/", async (req, res) => {
         );
 
         res.header("Authorization", `Bearer ${accessToken}`);
-        res.status(200).json({ message: "User logged in" });
+        res.status(200).json({ status: "200: OK", message: "User logged in" });
       }
     } else {
-      res.status(400).json({ message: "User doesn't exists" });
+      res.status(400).json({
+        status: "400: Bad Request",
+        message: "User doesn't exist",
+      });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({
+      status: "500: Internal Server Error",
+      message: "Unable to login due to server error",
+    });
   }
 });
 

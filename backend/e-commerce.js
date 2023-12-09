@@ -32,14 +32,5 @@ app.use("/changePassword", changePasswordRouter);
 const logoutRouter = require("./routes/logout");
 app.use("/logout", logoutRouter);
 
-const createRouter = require("./routes/seller/create");
-app.use("/create", createRouter);
-
-const readRouter = require("./routes/read");
-app.use("/read", readRouter);
-
-const updateRouter = require("./routes/seller/update");
-app.use("/update", updateRouter);
-
-const deleteRouter = require("./routes/seller/delete");
-app.use("/delete", deleteRouter);
+const dashboardRouter = require("./routes/dashboard");
+app.use("/dashboard", dashboardRouter);
