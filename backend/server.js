@@ -16,7 +16,7 @@ mongoose
     console.log("Connected to database");
   })
   .catch((err) => {
-    console.log(`Error : ${err}`);
+    console.log(`Error in server.js \n ${err}`);
   });
 
 // Terminate the server during uncaught exception
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   var domain = require("domain").create();
 
   domain.on("error", (err) => {
-    console.log("DOMAIN ERROR CAUGHT \n", err.stack);
+    console.log(`Error in server.js \n Domain error caught \n ${err.stack}`);
 
     try {
       setTimeout(() => {
@@ -44,9 +44,10 @@ app.use((req, res, next) => {
         next(err);
       } catch (err) {
         console.error("Express error mechanism failed \n", err.stack);
-        res.statusCode = 500;
-        res.setHeader("content-type", "text/plain");
-        res.end("Server error");
+        res
+          .status(500)
+          .setHeader("content-type", "text/plain")
+          .end("Server error");
       }
     } catch (err) {
       console.error("Unable to send 500 response.\n", err.stack);

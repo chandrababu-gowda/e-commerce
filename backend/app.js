@@ -19,7 +19,7 @@ app.use((req, res) => {
 
 // Custom 500 page
 app.use((err, req, res, next) => {
-  console.log(err.stack);
+  console.log(`Error in /app.js \n ${err}`);
   res
     .status(500)
     .json({ status: "500: Internal Server Error", message: "Error in server" });

@@ -22,7 +22,7 @@ function createController(req, res) {
         });
       })
       .catch((err) => {
-        console.log(`Error : ${err}`);
+        console.log(`Error in controllers/create.js \n ${err}`);
         res.status(500).json({
           status: "500: Internal Server Error",
           message: "Unable to add item to database",

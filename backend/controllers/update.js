@@ -16,7 +16,7 @@ async function updateController(req, res) {
         message: "Item updated",
       });
     } catch (err) {
-      console.log(err);
+      console.log(`Error in controllers/update.js \n ${err}`);
       res.status(500).json({
         status: "500: Internal Server Error",
         message: "Unable to update item in database",

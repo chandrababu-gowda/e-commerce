@@ -31,7 +31,7 @@ async function signupController(req, res) {
             password: hashedPassword,
           })
           .catch((err) => {
-            console.log(err);
+            console.log(`Error in controllers/authentication.js \n ${err}`);
           });
 
         profileModel
@@ -40,7 +40,7 @@ async function signupController(req, res) {
             cart: [],
           })
           .catch((err) => {
-            console.log(err);
+            console.log(`Error in controllers/authentication.js \n ${err}`);
           });
 
         const personDetails = {
@@ -62,7 +62,7 @@ async function signupController(req, res) {
       res.status(400).json({ message: "User already exists" });
     }
   } catch (err) {
-    console.log(err);
+    console.log(`Error in controllers/authentication.js \n ${err}`);
     res.status(500).json({ message: "Internal server error" });
   }
 }
@@ -105,7 +105,7 @@ async function loginController(req, res) {
       });
     }
   } catch (err) {
-    console.log(err);
+    console.log(`Error in controllers/authentication.js \n ${err}`);
     res.status(500).json({
       status: "500: Internal Server Error",
       message: "Unable to login due to server error",
@@ -147,7 +147,7 @@ async function changePasswordController(req, res) {
       });
     }
   } catch (err) {
-    console.log(err);
+    console.log(`Error in controllers/authentication.js \n ${err}`);
     res.status(500).json({
       status: "500: Internal Server Error",
       message: "Unable to update item in database",

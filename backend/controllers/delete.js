@@ -10,7 +10,7 @@ async function deleteController(req, res) {
         message: "Item deleted",
       });
     } catch (err) {
-      console.log(err);
+      console.log(`Error in controllers/delete.js \n ${err}`);
       res.status(500).json({
         status: "500: Internal Server Error",
         message: "Unable to delete item from database",

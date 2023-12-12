@@ -45,7 +45,7 @@ async function handleOrderRead(req, res) {
       orders: allOrder,
     });
   } catch (err) {
-    console.log(err);
+    console.log(`Error in controllers/order.js \n ${err}`);
     res.status(500).json({
       status: "500: Internal Server Error",
       message: "Unable to fetch the orders",
