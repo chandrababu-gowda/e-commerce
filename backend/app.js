@@ -1,12 +1,14 @@
 const express = require("express");
 const authRouter = require("./routes/auth");
 const dashboardRouter = require("./routes/dashboard");
+const ordersRouter = require("./routes/orders");
 
 const app = express();
 app.use(express.json());
 
 app.use("/auth", authRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/orders", ordersRouter);
 
 // Custom 404 page
 app.use((req, res) => {
